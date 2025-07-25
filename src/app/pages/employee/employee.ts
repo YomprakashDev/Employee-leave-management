@@ -1,30 +1,37 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { EmployeeServices } from '../../services/employee';
 import { responseEmployee, responseEmployeeData } from '../../model/employee.model';
+import { AddEmployee } from "../../components/add-employee/add-employee";
 
 @Component({
   selector: 'app-employee',
-  imports: [],
+  imports: [AddEmployee],
   templateUrl: './employee.html',
   styleUrl: './employee.scss'
 })
 export class Employee implements OnInit {
 
-employeeService = inject(EmployeeServices)
-employeeData :responseEmployeeData[]=[]
+  employeeService = inject(EmployeeServices)
+  employeeData: responseEmployeeData[] = []
 
-ngOnInit(): void {
-  this.getEmployeeData()
-}
+  ngOnInit(): void {
+    this.getEmployeeData()
+  }
 
-getEmployeeData(){
-  this.employeeService.getAllEmployeeData().subscribe({
-    next:(response:responseEmployee)=>{
-      this.employeeData = response.data
-    },
-    error:(err) => {
-      console.log(err)
-    }
-  })
-}
+  isEmployeeCreated = signal(false)
+
+
+  createNewEmployee() {
+    this.isEmployeeCreated.update((prv) => !prv)
+  }
+  getEmployeeData() {
+    this.employeeService.getAllEmployeeData().subscribe({
+      next: (response: responseEmployee) => {
+        this.employeeData = response.data
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
+  }
 }

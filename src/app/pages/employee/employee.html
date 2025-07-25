@@ -3,8 +3,13 @@
 
   <div class="header-group">
     <h2>Employee Table</h2>
-    <button>Create New Employee</button>
+    <button (click)="createNewEmployee()">Create New Employee</button>
   </div>
+
+  @if (isEmployeeCreated()) {
+  <app-add-employee></app-add-employee>
+
+  }
 
 
 <div class="table-wrapper">
