@@ -9,6 +9,7 @@ import { AddEmployee } from "../../components/add-employee/add-employee";
   templateUrl: './employee.html',
   styleUrl: './employee.scss'
 })
+
 export class Employee implements OnInit {
 
   employeeService = inject(EmployeeServices)
@@ -21,8 +22,11 @@ export class Employee implements OnInit {
   isEmployeeCreated = signal(false)
 
 
-  createNewEmployee() {
+  openModel() {
     this.isEmployeeCreated.update((prv) => !prv)
+  }
+  closeModel(){
+    this.isEmployeeCreated.set(false)
   }
   getEmployeeData() {
     this.employeeService.getAllEmployeeData().subscribe({

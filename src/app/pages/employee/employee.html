@@ -3,11 +3,11 @@
 
   <div class="header-group">
     <h2>Employee Table</h2>
-    <button (click)="createNewEmployee()">Create New Employee</button>
+    <button (click)="openModel()">Create New Employee</button>
   </div>
 
   @if (isEmployeeCreated()) {
-  <app-add-employee></app-add-employee>
+  <app-add-employee [onClose]="closeModel"></app-add-employee>
 
   }
 
