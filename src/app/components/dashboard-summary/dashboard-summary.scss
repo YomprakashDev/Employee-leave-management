@@ -1,0 +1,66 @@
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  flex: 1;
+  min-width: 200px;
+  max-width: 250px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.value {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.icon {
+  font-size: 30px;
+  color: #ccc;
+}
+
+/* Colored left-border accents */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  bottom: 15px;
+  width: 6px;
+  border-radius: 4px;
+}
+
+.total-employees::before {
+  background-color: #3b82f6;
+}
+.active-leaves::before {
+  background-color: #10b981;
+}
+.pending-approvals::before {
+  background-color: #06b6d4;
+}
+.this-month::before {
+  background-color: #f59e0b;
+}

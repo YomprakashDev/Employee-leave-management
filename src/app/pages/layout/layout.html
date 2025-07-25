@@ -1,0 +1,56 @@
+<div class="main">
+  <div class="sidebar">
+    <div class="logo">📋 ELMS Admin</div>
+
+    <ul class="menu">
+      <li class="menu-item active">
+        <a routerLink="dashboard-home">
+          <span class="icon">🧭</span>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a routerLink="employees">
+          <span class="icon">👥</span>
+          <span class="text">Employees</span>
+        </a>
+      </li>
+
+      <a routerLink="leave">
+        <span class="icon">📅</span>
+        <span class="text">Leave Management</span>
+      </a>
+      <li class="menu-item"></li>
+
+      <li class="menu-item dropdown">
+        <span class="icon">📊</span>
+        <span class="text">Reports ▾</span>
+      </li>
+
+      <li class="menu-item dropdown">
+        <span class="icon">⚙️</span>
+        <span class="text">Settings ▾</span>
+      </li>
+    </ul>
+
+    <div class="logout">
+      <button (click)="onLogout()" class="logout-btn">↩️ Logout</button>
+    </div>
+  </div>
+  <div class="sub-main">
+    <div class="header-bar">
+      <!-- Sidebar Toggle -->
+      <button class="menu-btn">☰</button>
+
+      <!-- Right Side: Admin Dropdown -->
+      <div class="user-profile">
+        <span class="user-icon">👤</span>
+        <span class="username">Admin User</span>
+        <span class="arrow">▾</span>
+      </div>
+    </div>
+    <!-- Dynamic Content -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

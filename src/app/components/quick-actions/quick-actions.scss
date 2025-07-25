@@ -1,0 +1,48 @@
+.quick-actions-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+  width: 300px;
+}
+
+.title {
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Color variants */
+.action-btn.blue {
+  background-color: #2563eb;
+}
+
+.action-btn.green {
+  background-color: #047857;
+}
+
+.action-btn.cyan {
+  background-color: #0284c7;
+}
+
+.action-btn.yellow {
+  background-color: #f59e0b;
+}

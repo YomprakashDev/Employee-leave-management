@@ -1,0 +1,41 @@
+
+<div class="main-content">
+
+  <div class="header-group">
+    <h2>Employee Table</h2>
+    <button>Create New Employee</button>
+  </div>
+
+
+<div class="table-wrapper">
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      @for (single of employeeData; track single.employeeId) {
+      <tr>
+        <td>{{ single.employeeId }}</td>
+        <td>{{ single.employeeName }}</td>
+        <td>{{ single.deptName }}</td>
+        <td>{{ single.contactNo }}</td>
+        <td>{{ single.emailId }}</td>
+        <td>{{ single.role }}</td>
+        <td>
+          <button class="btn edit">Edit</button>
+          <button class="btn delete">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+</div>
