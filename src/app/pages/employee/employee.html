@@ -7,10 +7,9 @@
   </div>
 
   @if (isEmployeeCreated()) {
-  <app-add-employee [onClose]="closeModel"></app-add-employee>
+  <app-add-employee  (close)="closeModel()"></app-add-employee>
 
   }
-
 
 <div class="table-wrapper">
   <table class="employee-table">
@@ -26,7 +25,7 @@
       </tr>
     </thead>
     <tbody class="table-body">
-      @for (single of employeeData; track single.employeeId) {
+      @for (single of employeeResponse().data; track single.employeeId) {
       <tr>
         <td>{{ single.employeeId }}</td>
         <td>{{ single.employeeName }}</td>

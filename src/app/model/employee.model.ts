@@ -1,5 +1,4 @@
 
-
 export interface responseEmployee {
     message: string;
     result: boolean;
@@ -14,4 +13,14 @@ export interface responseEmployeeData {
     contactNo: number,
     emailId: string;
     role: string;
+}
+
+export interface NewEmployee {
+  employeeName: string;
+  contactNo: string;
+  emailId: string;
+  deptId: string;
+  password: string;
+  gender: string;
+  role: string;
 }

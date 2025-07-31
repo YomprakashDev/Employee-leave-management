@@ -1,7 +1,7 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {  Component, inject,  signal } from '@angular/core';
 import { EmployeeServices } from '../../services/employee';
-import { responseEmployee, responseEmployeeData } from '../../model/employee.model';
 import { AddEmployee } from "../../components/add-employee/add-employee";
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-employee',
@@ -10,32 +10,33 @@ import { AddEmployee } from "../../components/add-employee/add-employee";
   styleUrl: './employee.scss'
 })
 
-export class Employee implements OnInit {
+export class Employee {
 
   employeeService = inject(EmployeeServices)
-  employeeData: responseEmployeeData[] = []
 
-  ngOnInit(): void {
-    this.getEmployeeData()
-  }
+  
+  employeeResponse = toSignal(
+    this.employeeService.getAllEmployeeData(),
+    {
+      initialValue: {
+        message: '',
+        result: false,
+        data: []
+      }
+    }
+  );
+
+  
 
   isEmployeeCreated = signal(false)
 
-
   openModel() {
-    this.isEmployeeCreated.update((prv) => !prv)
+    console.log('open model is called')
+    this.isEmployeeCreated.update(prv => !prv)
   }
-  closeModel(){
+  closeModel() {
+    console.log('close model is called')
     this.isEmployeeCreated.set(false)
   }
-  getEmployeeData() {
-    this.employeeService.getAllEmployeeData().subscribe({
-      next: (response: responseEmployee) => {
-        this.employeeData = response.data
-      },
-      error: (err) => {
-        console.log(err)
-      }
-    })
-  }
+
 }
