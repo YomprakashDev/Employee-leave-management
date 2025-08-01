@@ -21,9 +21,20 @@ export class Leave {
       noOfDays: [{ value: ''}],
       details: ['', Validators.required]
   })
- }
 
- onSubmitForm(){
+  // const loginUser = localStorage.getItem('loginUser')
+  // console.log('beteween login console')
+// if(loginUser!= null){
+//   const loggedData = JSON.parse(loginUser);
+//   console.log(loggedData)
+// }
+
+}
+
+ 
+
+ 
+onSubmitForm(){
 this.employeeServiece.addNewLeave(this.leaveForm.value).subscribe({
       next: (res: any) => {
         if (res.result) {

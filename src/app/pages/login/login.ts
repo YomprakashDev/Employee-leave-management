@@ -23,6 +23,7 @@ router = inject(Router)
         if(result.result){
           alert('login success')
           localStorage.setItem('loginUser',result.data)
+          console.log(result.data)
         this.router.navigateByUrl('/dashboard')
         
         }
