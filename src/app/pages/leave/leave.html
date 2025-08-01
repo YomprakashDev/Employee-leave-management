@@ -1,1 +1,115 @@
-<p>leave works!</p>
+<div class="leave-management">
+  <div class="header">
+    <h2>Leave Management</h2>
+    <button class="add-btn" (click)="openModal()">Add Leave Request</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active">All Leaves</button>
+    <button class="tab">Pending Approval</button>
+    <button class="tab">Approved</button>
+  </div>
+
+  <h4 class="sub-heading">All Leave Requests</h4>
+
+  <table class="leave-table">
+    <thead>
+      <tr>
+        <th>LEAVE ID</th>
+        <th>EMPLOYEE</th>
+        <th>LEAVE TYPE</th>
+        <th>FROM DATE</th>
+        <th>TO DATE</th>
+        <th>DAYS</th>
+        <th>STATUS</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>John Doe</td>
+        <td>Sick Leave</td>
+        <td>2024-01-15</td>
+        <td>2024-01-16</td>
+        <td>2</td>
+        <td><span class="badge pending">Pending</span></td>
+        <td class="actions">
+          <span class="dot blue"></span>
+          <span class="dot teal"></span>
+          <span class="dot yellow"></span>
+          <span class="dot red"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jane Smith</td>
+        <td>Annual Leave</td>
+        <td>2024-01-20</td>
+        <td>2024-01-24</td>
+        <td>5</td>
+        <td><span class="badge approved">Approved</span></td>
+        <td class="actions">
+          <span class="dot blue"></span>
+          <span class="dot yellow"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Mike Johnson</td>
+        <td>Personal Leave</td>
+        <td>2024-01-10</td>
+        <td>2024-01-10</td>
+        <td>1</td>
+        <td><span class="badge rejected">Rejected</span></td>
+        <td class="actions">
+          <span class="dot yellow"></span>
+          <span class="dot teal"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+@if (showModal) {
+<div class="modal-backdrop" >
+  <form (ngSubmit)="onSubmitForm()" [formGroup]="leaveForm" class="modal">
+    <div class="modal-header">
+      <h3>New Leave Request</h3>
+      <span class="close-icon" (click)="closeModal()">&#x2715;</span>
+    </div>
+
+    <div class="modal-body">
+      <label>Leave Type</label>
+      <select formControlName="leaveType">
+        <option>Sick Leave</option>
+        <option>Annual Leave</option>
+        <option>Personal Leave</option>
+      </select>
+
+      <div class="date-group">
+        <div>
+          <label >From Date</label>
+          <input formControlName="fromDate" type="date" />
+        </div>
+        <div>
+          <label>To Date</label>
+          <input formControlName="toDate" type="date" />
+        </div>
+      </div>
+
+      <label>Number of Days</label>
+      <input formControlName="noOfDays" type="number" />
+
+      <label>Reason</label>
+      <textarea formControlName="details" rows="3"></textarea>
+    </div>
+
+    <div class="modal-footer">
+      <button class="cancel" (click)="closeModal()">Cancel</button>
+      <button class="submit">Submit Request</button>
+    </div>
+</form>
+</div>
+}
+

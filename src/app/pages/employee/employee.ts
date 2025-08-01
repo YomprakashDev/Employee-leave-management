@@ -26,6 +26,17 @@ export class Employee {
     }
   );
 
+  oneDeleteEmpoyee(id:string){
+    this.employeeService.deleteEmployee(id).subscribe({
+      next:(res) => {
+        console.log(res)
+      },
+      error:() => {
+        
+      }
+    })
+
+  }
   
 
   isEmployeeCreated = signal(false)

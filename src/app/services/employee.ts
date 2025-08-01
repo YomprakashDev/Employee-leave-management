@@ -34,5 +34,22 @@ export class EmployeeServices {
     console.log(this.http.post('https://freeapi.miniprojectideas.com/api/EmployeeLeave/CreateEmployee',obj))
     return this.http.post('https://freeapi.miniprojectideas.com/api/EmployeeLeave/CreateEmployee',obj)
   }
+deleteEmployee(id: string) {
+  const url = `https://freeapi.miniprojectideas.com/api/EmployeeLeave/DeleteEmployee?id=${id}`;
+  return this.http.delete(url); 
+}
+
+addNewLeave(obj:any) {
+  console.log(obj)
+  return this.http.post('https://freeapi.miniprojectideas.com/api/EmployeeLeave/AddLeave',obj)
+}
+
+
+getAllLeavesByEmpployee(id:any){
+
+   return this.http.get('https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetAllLeavesByEmployeeId?id='+id)
+}
+
+
 
 }
