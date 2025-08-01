@@ -22,8 +22,8 @@ router = inject(Router)
       next:(result:any) => {
         if(result.result){
           alert('login success')
-          localStorage.setItem('loginUser',result.data)
-          console.log(result.data)
+          localStorage.setItem('loginUser',JSON.stringify(result.data))
+
         this.router.navigateByUrl('/dashboard')
         
         }

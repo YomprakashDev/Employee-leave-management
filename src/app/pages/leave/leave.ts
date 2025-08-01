@@ -22,12 +22,12 @@ export class Leave {
       details: ['', Validators.required]
   })
 
-  // const loginUser = localStorage.getItem('loginUser')
-  // console.log('beteween login console')
-// if(loginUser!= null){
-//   const loggedData = JSON.parse(loginUser);
-//   console.log(loggedData)
-// }
+  const loginUser = localStorage.getItem('loginUser')
+  console.log('beteween login console')
+if(loginUser!= null){
+  const loggedData = JSON.parse(loginUser);
+  console.log(loggedData)
+}
 
 }
 
