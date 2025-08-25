@@ -1,27 +1,48 @@
 import { Routes } from '@angular/router';
-import { Login } from './pages/login/login';
-import { Dashboard } from './pages/dashboard/dashboard';
-import { Layout } from './pages/layout/layout';
-import { Employee } from './pages/employee/employee';
-import { Leave } from './pages/leave/leave';
+
+/*
+ * Switch to dynamic `loadComponent` for each standalone component so that Angular
+ * generates separate chunks per route. This significantly lowers the initial
+ * bundle size and delays loading of page-level code until it is actually
+ * needed, which improves First Contentful Paint (FCP) and overall load times.
+ */
 
 export const routes: Routes = [
-    {
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login').then((m) => m.Login),
+  },
+  {
+    path: 'dashboard',
+    loadComponent: () =>
+      import('./pages/layout/layout').then((m) => m.Layout),
+    children: [
+      {
         path: '',
-        redirectTo: 'login',
-        pathMatch: 'full'
-    },
-    {
-        path: 'login', component: Login
-    },
-    {
-        path: 'dashboard', component: Layout,
-        children: [
-            { path: '', redirectTo: 'dashboard-home', pathMatch: 'full' },
-            { path: 'dashboard-home', component: Dashboard },
-            { path: 'employees', component: Employee },
-            { path: 'leave', component: Leave },
-        ]
-    },
-
+        redirectTo: 'dashboard-home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard-home',
+        loadComponent: () =>
+          import('./pages/dashboard/dashboard').then((m) => m.Dashboard),
+      },
+      {
+        path: 'employees',
+        loadComponent: () =>
+          import('./pages/employee/employee').then((m) => m.Employee),
+      },
+      {
+        path: 'leave',
+        loadComponent: () =>
+          import('./pages/leave/leave').then((m) => m.Leave),
+      },
+    ],
+  },
 ];
