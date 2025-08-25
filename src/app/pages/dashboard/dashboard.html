@@ -1,5 +1,15 @@
+@defer (on idle) {
+  <app-dashboard-summary></app-dashboard-summary>
+}
 
+@defer (on viewport) {
+  <app-leave-applications></app-leave-applications>
+} @placeholder {
+  <div>Loading leave applications…</div>
+}
 
-<app-dashboard-summary></app-dashboard-summary>
-<app-leave-applications></app-leave-applications>
-<app-quick-actions></app-quick-actions>
+@defer (on viewport) {
+  <app-quick-actions></app-quick-actions>
+} @placeholder {
+  <div>Loading quick actions…</div>
+}
